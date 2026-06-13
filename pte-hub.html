@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PTE Hub — PTE Academic Study Companion</title>
+<meta name="description" content="PTE Hub: practice every PTE Academic skill — reading, writing, speaking and listening — build vocabulary, track real progress, and find official exam booking links.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.35.0/tabler-icons.min.css">
+<style>
+:root{
+  --font-sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --color-background-primary:#ffffff;
+  --color-background-secondary:#f6f3ee;
+  --color-text-primary:#2b2520;
+  --color-text-secondary:#776b5d;
+  --color-text-tertiary:#aea08c;
+  --color-border-secondary:#ddd2bf;
+  --color-border-tertiary:#ece4d6;
+  --border-radius-md:8px;
+  --border-radius-lg:14px;
+  --accent:#854F0B;
+  --accent-bg:#FAEEDA;
+  --accent-dark:#633806;
+  --good:#3B6D11;--good-bg:#EAF3DE;--good-text:#27500A;
+  --bad:#A32D2D;--bad-bg:#FCEBEB;--bad-text:#791F1F;
+  --info:#185FA5;--info-bg:#E6F1FB;
+  --purple:#534AB7;--purple-bg:#EEEDFE;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--font-sans);color:var(--color-text-primary);background:var(--color-background-secondary);-webkit-font-smoothing:antialiased}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+a{color:inherit}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.app{display:flex;height:100vh;min-height:600px;overflow:hidden}
+.sidebar{width:224px;flex-shrink:0;border-right:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);display:flex;flex-direction:column;padding:16px 10px;overflow-y:auto}
+.logo{padding:4px 8px;margin-bottom:22px}
+.logo-top{font-size:18px;font-weight:500;color:var(--color-text-primary)}
+.logo-top span{color:var(--accent)}
+.logo-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.nav-btn{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--border-radius-md);cursor:pointer;font-size:13.5px;color:var(--color-text-secondary);margin-bottom:1px;transition:all .12s;border:none;background:none;width:100%;text-align:left}
+.nav-btn:hover{background:var(--color-background-primary);color:var(--color-text-primary)}
+.nav-btn.active{background:var(--color-background-primary);color:var(--color-text-primary);font-weight:500}
+.nav-btn i{font-size:17px;flex-shrink:0;width:17px;text-align:center}
+.nav-sec{font-size:10.5px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.07em;padding:14px 10px 5px}
+.main{flex:1;overflow-y:auto;padding:26px 30px}
+.pg{display:none}.pg.active{display:block}
+.ptitle{font-size:22px;font-weight:500;margin-bottom:5px}
+.psub{font-size:14px;color:var(--color-text-secondary);margin-bottom:24px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:18px}
+.card-sm{padding:14px}
+.badge{display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500;white-space:nowrap}
+.b-amber{background:var(--accent-bg);color:var(--accent)}
+.b-blue{background:var(--info-bg);color:var(--info)}
+.b-green{background:var(--good-bg);color:var(--good)}
+.b-red{background:var(--bad-bg);color:var(--bad)}
+.b-purple{background:var(--purple-bg);color:var(--purple)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 15px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-primary);font-size:13.5px;cursor:pointer;transition:all .13s;font-family:var(--font-sans)}
+.btn:hover{background:var(--color-background-secondary)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn-amber{background:var(--accent);color:var(--accent-bg);border-color:var(--accent)}
+.btn-amber:hover{background:var(--accent-dark);border-color:var(--accent-dark);color:var(--accent-bg)}
+.btn-sm{padding:5px 12px;font-size:12.5px}
+.inp{width:100%;padding:9px 11px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-size:14px;font-family:var(--font-sans)}
+.inp:focus{outline:none;border-color:var(--accent)}
+textarea.inp{resize:vertical;min-height:120px;line-height:1.6}
+.tabs{display:flex;gap:3px;background:var(--color-background-secondary);padding:3px;border-radius:var(--border-radius-md);margin-bottom:18px;width:fit-content;flex-wrap:wrap}
+.tab{padding:6px 14px;font-size:13px;border-radius:var(--border-radius-md);cursor:pointer;color:var(--color-text-secondary);border:0.5px solid transparent;background:none;font-family:var(--font-sans)}
+.tab.active{background:var(--color-background-primary);border-color:var(--color-border-tertiary);color:var(--color-text-primary);font-weight:500}
+.qopt{width:100%;text-align:left;padding:11px 14px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-size:13.5px;cursor:pointer;margin-bottom:7px;transition:all .12s;font-family:var(--font-sans);display:block}
+.qopt:hover:not(:disabled){border-color:var(--accent);background:#FAEEDA80}
+.qopt.correct{border-color:var(--good);background:var(--good-bg);color:var(--good-text)}
+.qopt.wrong{border-color:var(--bad);background:var(--bad-bg);color:var(--bad-text)}
+.qopt:disabled{cursor:default}
+.pb{height:5px;background:var(--color-background-secondary);border-radius:10px;overflow:hidden;margin-top:8px}
+.pf{height:100%;background:var(--accent);border-radius:10px;transition:width .3s}
+.wave{display:flex;align-items:center;gap:3px;height:36px}
+.wave span{width:3px;background:var(--accent);border-radius:3px;animation:wv 1s ease-in-out infinite}
+.wave span:nth-child(2){animation-delay:.1s}
+.wave span:nth-child(3){animation-delay:.2s}
+.wave span:nth-child(4){animation-delay:.3s}
+.wave span:nth-child(5){animation-delay:.4s}
+@keyframes wv{0%,100%{height:6px}50%{height:28px}}
+.spin{display:inline-block;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pill{display:inline-block;padding:4px 11px;border-radius:20px;font-size:12px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);cursor:pointer;margin:3px;background:var(--color-background-primary);font-family:var(--font-sans)}
+.pill:hover,.pill.sel{background:var(--accent);color:var(--accent-bg);border-color:var(--accent)}
+.cpill{display:inline-flex;align-items:center;gap:6px;padding:4px 6px 4px 12px;border-radius:20px;font-size:12px;border:0.5px solid var(--color-border-tertiary);margin:3px;background:var(--color-background-primary)}
+.cpill button{border:none;background:none;cursor:pointer;color:var(--color-text-tertiary);display:flex;padding:2px;border-radius:50%;font-size:13px}
+.cpill button:hover{color:var(--bad);background:var(--bad-bg)}
+.link-card{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:var(--color-background-primary);margin-bottom:10px;cursor:pointer;transition:all .13s;gap:12px}
+.link-card:hover{border-color:var(--accent);background:#FAEEDA15}
+.wod-box{background:var(--accent-bg);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:28px;text-align:center}
+.result{margin-top:12px;font-size:13.5px;padding:10px 12px;border-radius:var(--border-radius-md);line-height:1.6}
+.result.good{background:var(--good-bg);color:var(--good-text)}
+.result.warn{background:var(--accent-bg);color:#412402}
+.empty{grid-column:1/-1;text-align:center;padding:32px 16px;color:var(--color-text-tertiary)}
+.empty i{font-size:34px;display:block;margin-bottom:10px}
+.empty .empty-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.empty .empty-sub{font-size:13px;color:var(--color-text-secondary);max-width:380px;margin:0 auto}
+.score-badge{display:inline-flex;align-items:baseline;gap:5px;font-size:13px;color:var(--color-text-secondary)}
+.score-badge b{font-size:23px;color:var(--accent);font-weight:600}
+.fb-section-title{font-weight:500;margin-top:10px;font-size:13px}
+.fb-list{margin:4px 0 0 18px;font-size:13.5px;line-height:1.6}
+.fb-box{display:none;margin-top:14px;font-size:14px;line-height:1.7;color:var(--color-text-secondary);padding:12px 14px;background:var(--color-background-secondary);border-radius:var(--border-radius-md)}
+.fb-box.warn{color:var(--bad-text);background:var(--bad-bg)}
+.note-inline{display:none;align-items:center;gap:6px;font-size:12.5px;color:var(--good-text);background:var(--good-bg);padding:5px 10px;border-radius:20px;margin-top:8px}
+.ro-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:var(--color-background-primary);font-size:13.5px;margin-bottom:8px}
+.ro-item.dragging{opacity:.4}
+.ro-text{flex:1}
+.ro-handle{color:var(--color-text-tertiary);cursor:grab;display:flex;flex-shrink:0}
+.ro-controls{display:flex;flex-direction:column;flex-shrink:0}
+.ro-controls button{border:none;background:none;color:var(--color-text-tertiary);cursor:pointer;padding:1px 4px;border-radius:4px;display:flex;font-size:13px}
+.ro-controls button:hover:not(:disabled){color:var(--accent);background:var(--accent-bg)}
+.ro-controls button:disabled{opacity:.25;cursor:default}
+.mobile-bar{display:none;align-items:center;gap:12px;padding:12px 16px;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary);position:fixed;top:0;left:0;right:0;z-index:30}
+.menu-btn{border:none;background:none;font-size:21px;color:var(--color-text-primary);cursor:pointer;display:flex;padding:2px}
+.overlay{display:none;position:fixed;inset:0;background:rgba(20,15,8,.35);z-index:40}
+.streak-card{margin-top:10px}
+.intro-card{background:linear-gradient(135deg,var(--accent-bg) 0%,var(--color-background-primary) 70%);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:20px 22px;margin-bottom:18px}
+.intro-card h2{font-size:16px;font-weight:500;margin-bottom:6px}
+.intro-card p{font-size:13.5px;color:var(--color-text-secondary);line-height:1.7;max-width:640px}
+.skill-row{margin-bottom:10px}
+.skill-row-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+.timer-box{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .mobile-bar{display:flex}
+  .overlay{display:block;opacity:0;pointer-events:none;transition:opacity .2s}
+  .overlay.show{opacity:1;pointer-events:auto}
+  .sidebar{position:fixed;top:0;left:0;height:100vh;z-index:50;transform:translateX(-100%);transition:transform .25s ease;box-shadow:2px 0 20px rgba(0,0,0,.12);width:240px}
+  .sidebar.open{transform:translateX(0)}
+  .main{padding:16px;padding-top:70px}
+  .g2,.g3{grid-template-columns:1fr}
+  .ptitle{font-size:19px}
+}
+</style>
+</head>
+<body>
+<h1 class="sr-only">PTE Hub — practice PTE Academic reading, writing, speaking and listening, build vocabulary, store study materials, and track your progress toward your target score</h1>
+
+<div class="mobile-bar">
+  <button class="menu-btn" onclick="openSidebar()" aria-label="Open menu"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
+  <div style="font-size:15px;font-weight:500">PTE<span style="color:var(--accent)">Hub</span></div>
+</div>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="logo">
+    <div class="logo-top">PTE<span>Hub</span></div>
+    <div class="logo-sub">PTE Academic prep</div>
+  </div>
+  <button class="nav-btn active" onclick="nav('dash')"><i class="ti ti-dashboard" aria-hidden="true"></i>Dashboard</button>
+  <button class="nav-btn" onclick="nav('word')"><i class="ti ti-vocabulary" aria-hidden="true"></i>Word of the day</button>
+  <button class="nav-btn" onclick="nav('vocab')"><i class="ti ti-book" aria-hidden="true"></i>Vocabulary</button>
+  <button class="nav-btn" onclick="nav('files')"><i class="ti ti-folder" aria-hidden="true"></i>My materials</button>
+  <div class="nav-sec">PTE Practice</div>
+  <button class="nav-btn" onclick="nav('read')"><i class="ti ti-file-text" aria-hidden="true"></i>Reading</button>
+  <button class="nav-btn" onclick="nav('write')"><i class="ti ti-pencil" aria-hidden="true"></i>Writing</button>
+  <button class="nav-btn" onclick="nav('speak')"><i class="ti ti-microphone" aria-hidden="true"></i>Speaking</button>
+  <button class="nav-btn" onclick="nav('listen')"><i class="ti ti-headphones" aria-hidden="true"></i>Listening</button>
+  <div class="nav-sec">Exams &amp; links</div>
+  <button class="nav-btn" onclick="nav('exams')"><i class="ti ti-link" aria-hidden="true"></i>Book exam</button>
+  <div style="flex:1"></div>
+  <div class="card card-sm streak-card">
+    <div style="font-size:12px;color:var(--color-text-secondary)">Study streak</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+      <i class="ti ti-flame" style="font-size:20px;color:var(--accent)" aria-hidden="true"></i>
+      <span style="font-size:20px;font-weight:500" id="side-streak">1</span>
+      <span style="font-size:13px;color:var(--color-text-secondary)" id="side-streak-label">day</span>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+<!-- DASHBOARD -->
+<div class="pg active" id="pg-dash">
+  <div class="ptitle">Your PTE dashboard</div>
+  <div class="psub">PTE Academic — practice every skill, build vocabulary, and watch your progress grow</div>
+
+  <div class="intro-card">
+    <h2>Welcome to PTE Hub</h2>
+    <p>This is your all-in-one space to prepare for PTE Academic: a Word of the Day to grow your vocabulary, practice tasks for Reading, Writing, Speaking and Listening with AI feedback on your writing and listening responses, a place to store study materials, and direct links to book your exam. Everything below updates automatically as you practice — it starts at zero and grows with you.</p>
+  </div>
+
+  <div class="g3" style="margin-bottom:18px">
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:14px">
+      <div style="font-size:12px;color:var(--color-text-secondary)">Study streak</div>
+      <div style="font-size:26px;font-weight:500;margin-top:4px"><span id="stat-streak">1</span> <span style="font-size:13px;font-weight:400;color:var(--color-text-secondary)" id="stat-streak-label">day</span></div>
+      <div class="pb"><div class="pf" id="stat-streak-bar" style="width:14%"></div></div>
+      <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:4px">Come back daily to build your streak</div>
+    </div>
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:14px">
+      <div style="font-size:12px;color:var(--color-text-secondary)">Words saved</div>
+      <div style="font-size:26px;font-weight:500;margin-top:4px" id="stat-words">0</div>
+      <div class="pb"><div class="pf" id="stat-words-bar" style="width:0%;background:var(--good)"></div></div>
+      <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:4px" id="stat-words-sub">0 of 10 core words saved</div>
+    </div>
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:14px">
+      <div style="font-size:12px;color:var(--color-text-secondary)">Practice sessions</div>
+      <div style="font-size:26px;font-weight:500;margin-top:4px" id="stat-sessions">0</div>
+      <div class="pb"><div class="pf" id="stat-sessions-bar" style="width:0%;background:var(--purple)"></div></div>
+      <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:4px">This week — goal: 15</div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div style="font-weight:500;margin-bottom:14px">Today's PTE plan</div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);cursor:pointer" onclick="nav('word')">
+          <i class="ti ti-vocabulary" style="font-size:18px;color:var(--accent)" aria-hidden="true"></i>
+          <div><div style="font-size:13.5px;font-weight:500">Word of the day</div><div style="font-size:12px;color:var(--color-text-secondary)">Build PTE vocabulary</div></div>
+          <i class="ti ti-chevron-right" style="margin-left:auto;color:var(--color-text-tertiary)" aria-hidden="true"></i>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);cursor:pointer" onclick="nav('write')">
+          <i class="ti ti-pencil" style="font-size:18px;color:var(--purple)" aria-hidden="true"></i>
+          <div><div style="font-size:13.5px;font-weight:500">Summarise written text</div><div style="font-size:12px;color:var(--color-text-secondary)">PTE Writing — 1 sentence, AI scored</div></div>
+          <i class="ti ti-chevron-right" style="margin-left:auto;color:var(--color-text-tertiary)" aria-hidden="true"></i>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);cursor:pointer" onclick="nav('speak')">
+          <i class="ti ti-microphone" style="font-size:18px;color:var(--good)" aria-hidden="true"></i>
+          <div><div style="font-size:13.5px;font-weight:500">Read aloud practice</div><div style="font-size:12px;color:var(--color-text-secondary)">PTE Speaking — fluency</div></div>
+          <i class="ti ti-chevron-right" style="margin-left:auto;color:var(--color-text-tertiary)" aria-hidden="true"></i>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);cursor:pointer" onclick="nav('read')">
+          <i class="ti ti-file-text" style="font-size:18px;color:var(--info)" aria-hidden="true"></i>
+          <div><div style="font-size:13.5px;font-weight:500">Fill in the blanks</div><div style="font-size:12px;color:var(--color-text-secondary)">PTE Reading task</div></div>
+          <i class="ti ti-chevron-right" style="margin-left:auto;color:var(--color-text-tertiary)" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-weight:500;margin-bottom:4px">PTE score breakdown</div>
+      <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:14px">Builds from your AI-scored writing &amp; listening tasks and reading accuracy</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="skill-row"><div class="skill-row-top"><span>Speaking</span><span style="font-weight:500" id="skill-speaking-val">0 sessions</span></div><div class="pb"><div class="pf" id="skill-speaking-bar" style="width:0%;background:var(--good)"></div></div></div>
+        <div class="skill-row"><div class="skill-row-top"><span>Writing</span><span style="font-weight:500" id="skill-writing-val">—</span></div><div class="pb"><div class="pf" id="skill-writing-bar" style="width:0%;background:var(--purple)"></div></div></div>
+        <div class="skill-row"><div class="skill-row-top"><span>Reading</span><span style="font-weight:500" id="skill-reading-val">—</span></div><div class="pb"><div class="pf" id="skill-reading-bar" style="width:0%;background:var(--info)"></div></div></div>
+        <div class="skill-row"><div class="skill-row-top"><span>Listening</span><span style="font-weight:500" id="skill-listening-val">—</span></div><div class="pb"><div class="pf" id="skill-listening-bar" style="width:0%;background:var(--accent)"></div></div></div>
+      </div>
+      <div style="border-top:0.5px solid var(--color-border-tertiary);margin-top:16px;padding-top:14px">
+        <button class="btn btn-sm" style="width:100%;justify-content:center" onclick="nav('exams')"><i class="ti ti-link" aria-hidden="true"></i>Book your PTE exam</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WORD OF THE DAY -->
+<div class="pg" id="pg-word">
+  <div class="ptitle">Word of the day</div>
+  <div class="psub">High-frequency PTE vocabulary — a new focus word every day</div>
+  <div class="wod-box">
+    <div style="font-size:11px;color:var(--accent);margin-bottom:14px;font-weight:500" id="w-label">PTE WORD OF THE DAY</div>
+    <div style="font-size:34px;font-weight:500;color:#412402;margin-bottom:6px" id="w-word">—</div>
+    <div style="font-size:13.5px;color:var(--accent);margin-bottom:14px;font-style:italic" id="w-pron"></div>
+    <div style="font-size:14.5px;color:#412402;line-height:1.7;max-width:420px;margin:0 auto 14px" id="w-def"></div>
+    <div style="font-size:13px;color:var(--accent-dark);font-style:italic;border-left:3px solid var(--accent);padding-left:12px;text-align:left;max-width:420px;margin:0 auto" id="w-ex"></div>
+    <div style="margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+      <span class="badge b-amber" id="w-lv">— level</span>
+      <span class="badge b-purple">High PTE frequency</span>
+      <span class="badge b-amber">Academic</span>
+    </div>
+  </div>
+  <div class="g2" style="margin-top:14px">
+    <div class="card card-sm">
+      <div style="font-weight:500;margin-bottom:10px">Synonyms</div>
+      <div id="w-syn"></div>
+    </div>
+    <div class="card card-sm">
+      <div style="font-weight:500;margin-bottom:10px">Word forms</div>
+      <div style="font-size:13.5px;display:flex;flex-direction:column;gap:5px" id="w-forms"></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div style="font-weight:500;margin-bottom:12px">Quick check — pick the correct usage</div>
+    <div id="wod-quiz"></div>
+  </div>
+  <div style="display:flex;gap:10px;margin-top:16px;align-items:center;flex-wrap:wrap">
+    <button class="btn btn-amber" onclick="nextWord()"><i class="ti ti-refresh" aria-hidden="true"></i>Next word</button>
+    <button class="btn" id="w-save-btn" onclick="saveCurrentWord()"><i class="ti ti-bookmark" aria-hidden="true"></i>Save word</button>
+    <span class="note-inline" id="w-save-note"></span>
+  </div>
+</div>
+
+<!-- VOCABULARY -->
+<div class="pg" id="pg-vocab">
+  <div class="ptitle">Vocabulary builder</div>
+  <div class="psub">Review flashcards, revisit saved words, and grow your own custom list</div>
+  <div class="tabs">
+    <div class="tab active" onclick="vtab(this,'vq')">Flashcards</div>
+    <div class="tab" onclick="vtab(this,'vs')">Saved</div>
+    <div class="tab" onclick="vtab(this,'vl')">Word lists</div>
+  </div>
+  <div id="vq">
+    <div class="card" style="text-align:center;padding:32px;margin-bottom:14px">
+      <div style="font-size:11px;color:var(--color-text-tertiary);margin-bottom:16px" id="vq-count">CARD 1 OF 10 — PTE Core vocabulary</div>
+      <div style="font-size:28px;font-weight:500;margin-bottom:6px" id="vq-word">—</div>
+      <div style="font-size:13px;color:var(--color-text-secondary);font-style:italic;margin-bottom:18px" id="vq-pron"></div>
+      <div id="vq-def" style="display:none;font-size:14px;line-height:1.7;color:var(--color-text-secondary);margin-bottom:16px"></div>
+      <button class="btn" id="vq-btn" onclick="flipV()"><i class="ti ti-eye" aria-hidden="true"></i>Show definition</button>
+      <div id="vq-rate" style="display:none;margin-top:14px">
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:10px">How well did you know it?</div>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-sm" style="border-color:var(--bad);color:var(--bad)" onclick="rateV('review')">Didn't know</button>
+          <button class="btn btn-sm" style="border-color:var(--accent);color:var(--accent)" onclick="rateV('review')">Partly</button>
+          <button class="btn btn-sm" style="border-color:var(--good);color:var(--good)" onclick="rateV('mastered')">Got it</button>
+        </div>
+      </div>
+    </div>
+    <div class="pb"><div class="pf" id="vq-prog" style="width:0%"></div></div>
+    <div style="font-size:12px;color:var(--color-text-tertiary);margin-top:5px" id="vq-count2">1 / 10 cards</div>
+  </div>
+  <div id="vs" style="display:none">
+    <div class="g2" id="vs-grid"></div>
+  </div>
+  <div id="vl" style="display:none">
+    <div class="g2">
+      <div class="card">
+        <div style="font-weight:500;margin-bottom:4px">Your core vocabulary</div>
+        <div style="font-size:13px;color:var(--color-text-secondary)">Mastery across the PTE Hub word bank</div>
+        <div class="pb" style="margin-top:12px"><div class="pf" id="wl-bar" style="width:0%;background:var(--good)"></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:4px" id="wl-count">0 / 10 mastered</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-top:10px">Rate flashcards "Got it" to mark a word as mastered.</div>
+      </div>
+      <div class="card">
+        <div style="font-weight:500;margin-bottom:4px">Your custom list</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:10px">Add any word you want to remember</div>
+        <div style="display:flex;gap:8px">
+          <input class="inp" id="custom-inp" placeholder="e.g. nevertheless" maxlength="40" onkeydown="if(event.key==='Enter')addCustomWord()">
+          <button class="btn btn-amber btn-sm" onclick="addCustomWord()"><i class="ti ti-plus" aria-hidden="true"></i>Add</button>
+        </div>
+        <div style="margin-top:12px" id="custom-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FILES -->
+<div class="pg" id="pg-files">
+  <div class="ptitle">My study materials</div>
+  <div class="psub">Upload screenshots, notes, PDFs — keep everything in one place for this session</div>
+  <div id="drop-zone" style="border:1.5px dashed var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:36px;text-align:center;cursor:pointer;transition:all .2s" onclick="document.getElementById('fi').click()" ondragover="event.preventDefault();this.style.borderColor='var(--accent)'" ondragleave="this.style.borderColor=''" ondrop="doDrop(event)">
+    <i class="ti ti-upload" style="font-size:34px;color:var(--accent);margin-bottom:10px;display:block" aria-hidden="true"></i>
+    <div style="font-size:14.5px;font-weight:500;margin-bottom:5px">Drop files here or click to browse</div>
+    <div style="font-size:13px;color:var(--color-text-secondary)">Images, PDFs, screenshots, notes — all accepted</div>
+    <input type="file" id="fi" multiple style="display:none" onchange="doFiles(this.files)">
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:22px;margin-bottom:6px;flex-wrap:wrap;gap:8px">
+    <div style="font-weight:500">Files <span id="fc" style="color:var(--color-text-secondary);font-weight:400;font-size:13px">(0)</span></div>
+    <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+      <span class="pill sel" onclick="filt('all',this)">All</span><span class="pill" onclick="filt('img',this)">Images</span><span class="pill" onclick="filt('pdf',this)">PDFs</span><span class="pill" onclick="filt('doc',this)">Docs</span>
+      <button class="btn btn-sm" style="margin-left:6px" onclick="clearFiles()"><i class="ti ti-trash" aria-hidden="true"></i>Clear all</button>
+    </div>
+  </div>
+  <div style="font-size:12px;color:var(--color-text-tertiary);margin-bottom:10px"><i class="ti ti-info-circle" aria-hidden="true"></i> Files are kept for this browser session only and aren't uploaded anywhere.</div>
+  <div id="fg" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:4px">
+    <div class="empty"><i class="ti ti-folder-open" aria-hidden="true"></i><div class="empty-title">No files yet</div><div class="empty-sub">Drop a screenshot, PDF or note above to keep it handy while you study.</div></div>
+  </div>
+</div>
+
+<!-- READING -->
+<div class="pg" id="pg-read">
+  <div class="ptitle">PTE Reading practice</div>
+  <div class="psub">Fill in the blanks, re-order paragraphs, and multiple-choice tasks</div>
+  <div class="tabs">
+    <div class="tab active" onclick="rtab(this,'rr-fitb')">Fill in the blanks</div>
+    <div class="tab" onclick="rtab(this,'rr-mcq')">Multiple choice</div>
+    <div class="tab" onclick="rtab(this,'rr-ro')">Re-order</div>
+  </div>
+  <div id="rr-fitb">
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap">
+        <span class="badge b-amber">PTE — Fill in the blanks</span>
+        <button class="btn btn-sm btn-amber" onclick="newReadingFITB()"><i class="ti ti-refresh" aria-hidden="true"></i>New passage</button>
+      </div>
+      <div id="rfitb-text" style="font-size:14px;line-height:2"></div>
+    </div>
+    <button class="btn btn-amber btn-sm" onclick="checkFITB('rfitb-text','rfitb-result','reading')"><i class="ti ti-check" aria-hidden="true"></i>Check answers</button>
+    <div id="rfitb-result" class="result" style="display:none"></div>
+  </div>
+  <div id="rr-mcq" style="display:none">
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap">
+        <span class="badge b-amber">PTE — Multiple choice, single answer</span>
+        <button class="btn btn-sm" onclick="newMCQ()"><i class="ti ti-refresh" aria-hidden="true"></i>New question</button>
+      </div>
+      <div id="mcq-passage" style="font-size:14px;line-height:1.8;color:var(--color-text-secondary);background:var(--color-background-secondary);padding:14px;border-radius:var(--border-radius-md);margin-bottom:16px"></div>
+      <div id="mcq-q" style="font-size:14px;font-weight:500;margin-bottom:12px"></div>
+      <div id="mcq-opts"></div>
+    </div>
+  </div>
+  <div id="rr-ro" style="display:none">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap">
+        <span class="badge b-amber">PTE — Re-order paragraphs</span>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-sm" onclick="shuffleRO()"><i class="ti ti-arrows-shuffle" aria-hidden="true"></i>Shuffle</button>
+          <button class="btn btn-sm" onclick="newROSet()"><i class="ti ti-refresh" aria-hidden="true"></i>New set</button>
+        </div>
+      </div>
+      <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:14px">Drag the sentences (or use the arrows) into the correct order to form a coherent paragraph.</div>
+      <div id="ro-list"></div>
+      <button class="btn btn-amber btn-sm" style="margin-top:6px" onclick="checkRO()"><i class="ti ti-check" aria-hidden="true"></i>Check order</button>
+      <div id="ro-result" class="result" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- WRITING -->
+<div class="pg" id="pg-write">
+  <div class="ptitle">PTE Writing practice</div>
+  <div class="psub">AI-scored feedback on your PTE writing tasks</div>
+  <div class="tabs">
+    <div class="tab active" onclick="wtab(this,'ww-sum')">Summarise written text</div>
+    <div class="tab" onclick="wtab(this,'ww-essay')">Write essay</div>
+  </div>
+  <div id="ww-sum">
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px;flex-wrap:wrap">
+        <span class="badge b-amber">PTE — Summarise written text</span>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:12px;color:var(--color-text-secondary)">Write ONE sentence only</span>
+          <button class="btn btn-sm" onclick="newSumPassage()"><i class="ti ti-refresh" aria-hidden="true"></i>New passage</button>
+        </div>
+      </div>
+      <div id="sum-passage" style="font-size:13.5px;line-height:1.8;color:var(--color-text-secondary);background:var(--color-background-secondary);padding:14px;border-radius:var(--border-radius-md)"></div>
+    </div>
+    <div class="card">
+      <textarea class="inp" id="sum-inp" placeholder="Write your ONE-sentence summary here..." style="min-height:90px"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span style="font-size:12px;color:var(--color-text-secondary)" id="sum-wc">0 words</span>
+        <button class="btn btn-amber btn-sm" onclick="getSumFeedback(this)"><i class="ti ti-sparkles" aria-hidden="true"></i>Get AI score</button>
+      </div>
+      <div id="sum-fb" class="fb-box"></div>
+    </div>
+  </div>
+  <div id="ww-essay" style="display:none">
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px;flex-wrap:wrap">
+        <span class="badge b-amber">PTE — Write essay</span>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:12px;color:var(--color-text-secondary)">200–300 words, 20 minutes</span>
+          <button class="btn btn-sm" onclick="newEssayPrompt()"><i class="ti ti-refresh" aria-hidden="true"></i>New prompt</button>
+        </div>
+      </div>
+      <div id="essay-prompt" style="font-size:13.5px;line-height:1.8;color:var(--color-text-secondary);background:var(--color-background-secondary);padding:14px;border-radius:var(--border-radius-md)"></div>
+    </div>
+    <div class="card">
+      <textarea class="inp" id="essay-inp" placeholder="Write your essay here (200–300 words)..." style="min-height:200px"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span style="font-size:12px;color:var(--color-text-secondary)" id="essay-wc">0 words</span>
+        <button class="btn btn-amber btn-sm" onclick="getEssayFeedback(this)"><i class="ti ti-sparkles" aria-hidden="true"></i>Get AI score</button>
+      </div>
+      <div id="essay-fb" class="fb-box"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SPEAKING -->
+<div class="pg" id="pg-speak">
+  <div class="ptitle">PTE Speaking practice</div>
+  <div class="psub">Read aloud, repeat sentences, and describe images</div>
+  <div class="tabs">
+    <div class="tab active" onclick="stab(this,'ss-ra')">Read aloud</div>
+    <div class="tab" onclick="stab(this,'ss-rs')">Repeat sentence</div>
+    <div class="tab" onclick="stab(this,'ss-di')">Describe image</div>
+  </div>
+  <div id="ss-ra">
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap"><span class="badge b-amber">PTE — Read aloud</span><button class="btn btn-sm" onclick="newRA()"><i class="ti ti-refresh" aria-hidden="true"></i>New text</button></div>
+      <div id="ra-text" style="font-size:15px;line-height:1.9;color:var(--color-text-primary);background:var(--color-background-secondary);padding:16px;border-radius:var(--border-radius-md)"></div>
+    </div>
+    <div class="card">
+      <div style="font-weight:500;margin-bottom:10px">Tips for Read Aloud</div>
+      <div style="display:flex;flex-direction:column;gap:7px;font-size:13.5px;color:var(--color-text-secondary)">
+        <div style="display:flex;gap:9px"><i class="ti ti-check" style="color:var(--good);flex-shrink:0" aria-hidden="true"></i>Speak at a natural, steady pace — not too fast</div>
+        <div style="display:flex;gap:9px"><i class="ti ti-check" style="color:var(--good);flex-shrink:0" aria-hidden="true"></i>Stress content words: nouns, verbs, adjectives</div>
+        <div style="display:flex;gap:9px"><i class="ti ti-check" style="color:var(--good);flex-shrink:0" aria-hidden="true"></i>Pause at commas and full stops</div>
+        <div style="display:flex;gap:9px"><i class="ti ti-check" style="color:var(--good);flex-shrink:0" aria-hidden="true"></i>Don't re-read if you make a mistake — keep going</div>
+      </div>
+      <div class="timer-box">
+        <button class="btn btn-amber" id="rec-btn" onclick="toggleRec()"><i class="ti ti-microphone" aria-hidden="true"></i><span id="rec-lbl">Start recording</span></button>
+        <div id="rec-ind" style="display:none"><div class="wave"><span></span><span></span><span></span><span></span><span></span></div></div>
+        <span id="rec-t" style="font-size:13px;color:var(--color-text-secondary)">Press to begin — this times your practice and logs a session</span>
+      </div>
+    </div>
+  </div>
+  <div id="ss-rs" style="display:none">
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px;flex-wrap:wrap"><span class="badge b-amber">PTE — Repeat sentence</span><button class="btn btn-sm" onclick="newRS()"><i class="ti ti-refresh" aria-hidden="true"></i>New sentence</button></div>
+      <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:14px">Listen to the sentence, then repeat it exactly. Try saying it aloud before revealing the text.</div>
+      <div style="background:var(--color-background-secondary);padding:14px;border-radius:var(--border-radius-md);text-align:center;margin-bottom:14px">
+        <div class="wave" style="justify-content:center;margin-bottom:10px"><span></span><span></span><span></span><span></span><span></span></div>
+        <div style="font-size:13px;color:var(--color-text-secondary)">Audio simulation — memorise then repeat</div>
+      </div>
+      <div id="rs-text" style="display:none;font-size:14.5px;line-height:1.7;color:var(--color-text-primary);border-left:3px solid var(--accent);padding-left:12px"></div>
+      <button class="btn btn-sm" style="margin-top:12px" id="rs-reveal-btn" onclick="revealRS()"><i class="ti ti-eye" aria-hidden="true"></i>Reveal sentence</button>
+    </div>
+  </div>
+  <div id="ss-di" style="display:none">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap"><span class="badge b-amber">PTE — Describe image</span><button class="btn btn-sm" onclick="newDI()"><i class="ti ti-refresh" aria-hidden="true"></i>New chart</button></div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:20px;text-align:center;margin-bottom:14px">
+        <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:12px" id="di-chart-title">Bar chart (simulated)</div>
+        <div style="display:flex;align-items:flex-end;gap:10px;justify-content:center;height:100px" id="di-bars"></div>
+        <div style="font-size:12px;color:var(--color-text-tertiary);margin-top:8px" id="di-unit"></div>
+      </div>
+      <div style="font-size:13.5px;color:var(--color-text-secondary);margin-bottom:12px">Use this template, then try the timed practice below.</div>
+      <div style="background:var(--accent-bg);padding:12px;border-radius:var(--border-radius-md);font-size:13.5px;color:#412402;line-height:1.8">
+        "The bar chart illustrates [topic] from [time period]. Overall, [main trend]. In [year], [specific detail]. By [year], [comparison]. The most notable feature is [key observation]."
+      </div>
+      <div class="timer-box">
+        <button class="btn btn-amber" id="di-btn" onclick="startDIPractice()"><i class="ti ti-player-play" aria-hidden="true"></i>Start timed practice</button>
+        <span id="di-status" style="font-size:13px;color:var(--color-text-secondary)">25s to study, then 40s to describe</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTENING -->
+<div class="pg" id="pg-listen">
+  <div class="ptitle">PTE Listening practice</div>
+  <div class="psub">Summarise spoken text and fill in the blanks</div>
+  <div class="tabs">
+    <div class="tab active" onclick="ltab(this,'ls-sum')">Summarise spoken text</div>
+    <div class="tab" onclick="ltab(this,'ls-fitb')">Fill in the blanks</div>
+  </div>
+  <div id="ls-sum">
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap">
+        <span class="badge b-amber">PTE — Summarise spoken text</span>
+        <button class="btn btn-sm" onclick="newLstPassage()"><i class="ti ti-refresh" aria-hidden="true"></i>New lecture</button>
+      </div>
+      <div style="background:var(--color-background-secondary);padding:16px;border-radius:var(--border-radius-md);margin-bottom:14px">
+        <div class="wave" style="margin-bottom:10px"><span></span><span></span><span></span><span></span><span></span></div>
+        <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:10px">Audio transcript (read carefully — in the real exam you only hear it once):</div>
+        <div id="lst-passage" style="font-size:13.5px;line-height:1.8;color:var(--color-text-primary)"></div>
+      </div>
+      <textarea class="inp" id="lst-inp" placeholder="Write a 50–70 word summary of the lecture. Include the main idea and key supporting points..." style="min-height:110px"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <span style="font-size:12px;color:var(--color-text-secondary)" id="lst-wc">0 words</span>
+        <button class="btn btn-amber btn-sm" onclick="getLstFeedback(this)"><i class="ti ti-sparkles" aria-hidden="true"></i>Get AI feedback</button>
+      </div>
+      <div id="lst-fb" class="fb-box"></div>
+    </div>
+  </div>
+  <div id="ls-fitb" style="display:none">
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap">
+        <span class="badge b-amber">PTE — Listening fill in the blanks</span>
+        <button class="btn btn-sm btn-amber" onclick="newListeningFITB()"><i class="ti ti-refresh" aria-hidden="true"></i>New passage</button>
+      </div>
+      <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:12px">Read the transcript as if you heard it, then choose the word that was used.</div>
+      <div id="lfitb-text" style="font-size:14px;line-height:2"></div>
+    </div>
+    <button class="btn btn-amber btn-sm" onclick="checkFITB('lfitb-text','lfitb-result','listening')"><i class="ti ti-check" aria-hidden="true"></i>Check answers</button>
+    <div id="lfitb-result" class="result" style="display:none"></div>
+  </div>
+</div>
+
+<!-- BOOK EXAM -->
+<div class="pg" id="pg-exams">
+  <div class="ptitle">Book your PTE exam</div>
+  <div class="psub">Official links to register, find test centres, and access practice materials</div>
+
+  <div style="font-weight:500;margin-bottom:12px">Official PTE booking</div>
+  <a href="https://www.pearsonpte.com" target="_blank" rel="noopener" style="text-decoration:none">
+    <div class="link-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:40px;height:40px;background:var(--accent-bg);border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-certificate" style="font-size:20px;color:var(--accent)" aria-hidden="true"></i></div>
+        <div><div style="font-weight:500;font-size:14px">PTE Academic — Pearson official site</div><div style="font-size:12px;color:var(--color-text-secondary);margin-top:2px">Register, choose a test centre and date, and manage your booking</div></div>
+      </div>
+      <i class="ti ti-external-link" style="color:var(--color-text-tertiary);flex-shrink:0" aria-hidden="true"></i>
+    </div>
+  </a>
+  <a href="https://www.pearsonpte.com/preparation" target="_blank" rel="noopener" style="text-decoration:none">
+    <div class="link-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:40px;height:40px;background:var(--good-bg);border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-clipboard-check" style="font-size:20px;color:var(--good)" aria-hidden="true"></i></div>
+        <div><div style="font-weight:500;font-size:14px">Official scored practice tests</div><div style="font-size:12px;color:var(--color-text-secondary);margin-top:2px">Full-length practice scored with the same AI as the real exam</div></div>
+      </div>
+      <i class="ti ti-external-link" style="color:var(--color-text-tertiary);flex-shrink:0" aria-hidden="true"></i>
+    </div>
+  </a>
+
+  <div style="font-weight:500;margin:20px 0 12px">Free PTE practice resources</div>
+  <a href="https://www.e2language.com/pte" target="_blank" rel="noopener" style="text-decoration:none">
+    <div class="link-card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:40px;height:40px;background:var(--purple-bg);border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-school" style="font-size:20px;color:var(--purple)" aria-hidden="true"></i></div>
+        <div><div style="font-weight:500;font-size:14px">E2Language — free PTE practice</div><div style="font-size:12px;color:var(--color-text-secondary);margin-top:2px">Question-type guides, sample tasks, and a free mock test</div></div>
+      </div>
+      <i class="ti ti-external-link" style="color:var(--color-text-tertiary);flex-shrink:0" aria-hidden="true"></i>
+    </div>
+  </a>
+
+  <div style="font-weight:500;margin:20px 0 12px">PTE in Nepal</div>
+  <div class="card card-sm" style="margin-bottom:10px">
+    <div style="font-weight:500;margin-bottom:6px">Test centres</div>
+    <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.8">Nepal has several Pearson-authorised PTE Academic test centres, including in Kathmandu, Pokhara, Chitwan and Biratnagar. Availability changes often, so use the official site to see current dates and locations near you.</div>
+    <a href="https://www.pearsonpte.com" target="_blank" rel="noopener"><button class="btn btn-amber btn-sm" style="margin-top:10px"><i class="ti ti-map-pin" aria-hidden="true"></i>Find a centre &amp; book</button></a>
+  </div>
+  <div class="card card-sm">
+    <div style="font-weight:500;margin-bottom:6px">Before you book</div>
+    <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.8">PTE Academic takes about two hours and covers speaking, writing, reading and listening in one sitting. Most test takers receive results within a few business days through their Pearson account.</div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+/* ============================== DATA ============================== */
+const VOCAB=[
+ {w:"Meticulous",p:"/məˈtɪk.jə.ləs/ — adjective",d:"Showing great attention to detail; very careful and precise in one's work.",e:"The candidate gave a meticulous response, covering every aspect of the question.",syn:["Precise","Thorough","Painstaking","Scrupulous"],forms:{Adverb:"meticulously",Noun:"meticulousness"},lv:"C1",quiz:{correct:"He kept meticulous records of every transaction.",wrong:["She was meticulous and fell asleep during the lecture.","The meticulous weather made the journey difficult."]}},
+ {w:"Ubiquitous",p:"/juːˈbɪk.wɪ.təs/ — adjective",d:"Present, appearing, or found everywhere.",e:"Smartphones have become ubiquitous in modern society.",syn:["Omnipresent","Pervasive","Widespread","Universal"],forms:{Adverb:"ubiquitously",Noun:"ubiquity"},lv:"C1",quiz:{correct:"Free wifi is now ubiquitous in cafes and airports.",wrong:["The ubiquitous rock sat alone in the empty field.","She felt ubiquitous after the long flight."]}},
+ {w:"Exacerbate",p:"/ɪɡˈzæs.ə.beɪt/ — verb",d:"To make a problem, bad situation, or negative feeling worse.",e:"The drought was exacerbated by unusually high temperatures.",syn:["Worsen","Aggravate","Intensify","Compound"],forms:{Noun:"exacerbation",Adjective:"exacerbated"},lv:"C1",quiz:{correct:"The committee's decision will exacerbate existing tensions between the two departments.",wrong:["Regular exercise can exacerbate your overall health and wellbeing.","The team worked together to exacerbate the project deadline."]}},
+ {w:"Proliferate",p:"/prəˈlɪf.ər.eɪt/ — verb",d:"To grow or increase rapidly in number.",e:"Social media platforms have proliferated rapidly over two decades.",syn:["Multiply","Expand","Burgeon","Mushroom"],forms:{Noun:"proliferation",Adjective:"proliferating"},lv:"B2",quiz:{correct:"Fake news stories have proliferated across social media in recent years.",wrong:["The company proliferated its workforce by ten employees last month.","She proliferated quietly to avoid waking the baby."]}},
+ {w:"Ambiguous",p:"/æmˈbɪɡ.ju.əs/ — adjective",d:"Open to more than one interpretation; not having one obvious meaning.",e:"The policy statement was deliberately ambiguous.",syn:["Unclear","Vague","Equivocal","Uncertain"],forms:{Adverb:"ambiguously",Noun:"ambiguity"},lv:"B2",quiz:{correct:"The professor's instructions were ambiguous, leaving students unsure how to proceed.",wrong:["The mathematical proof was completely ambiguous and left no room for doubt.","He gave an ambiguous high-five to celebrate the win."]}},
+ {w:"Facilitate",p:"/fəˈsɪl.ɪ.teɪt/ — verb",d:"To make an action or process easier or more achievable.",e:"Technology can facilitate access to education in remote regions.",syn:["Enable","Assist","Ease","Promote"],forms:{Noun:"facilitation",Collocation:"facilitate a discussion / process"},lv:"B2",quiz:{correct:"Online tools can facilitate communication between remote teams.",wrong:["The locked door facilitated his entry into the building.","She facilitated her lunch quickly before the meeting."]}},
+ {w:"Mitigate",p:"/ˈmɪt.ɪ.ɡeɪt/ — verb",d:"To make something less severe, serious, or painful.",e:"Governments are investing in technology to mitigate the effects of climate change.",syn:["Reduce","Alleviate","Ease","Lessen"],forms:{Noun:"mitigation",Adjective:"mitigating"},lv:"C1",quiz:{correct:"The new flood barriers were designed to mitigate the risk of property damage.",wrong:["The award ceremony mitigated everyone's excitement about the results.","He mitigated the cake into equal slices for the guests."]}},
+ {w:"Cohesive",p:"/kəʊˈhiː.sɪv/ — adjective",d:"Forming a unified whole; closely connected.",e:"A cohesive team with shared goals tends to outperform talented individuals working in isolation.",syn:["Unified","Integrated","Consistent","Coherent"],forms:{Adverb:"cohesively",Noun:"cohesion"},lv:"B2",quiz:{correct:"The essay lacked a cohesive structure, jumping between unrelated ideas.",wrong:["The shattered glass formed a cohesive pile on the floor.","He felt cohesive after running the marathon."]}},
+ {w:"Plausible",p:"/ˈplɔː.zə.bəl/ — adjective",d:"Seeming reasonable or probable.",e:"Although the explanation seemed plausible, investigators wanted further evidence.",syn:["Credible","Believable","Reasonable","Feasible"],forms:{Adverb:"plausibly",Noun:"plausibility"},lv:"B2",quiz:{correct:"The witness gave a plausible account of what happened that evening.",wrong:["The plausible theory was immediately dismissed as impossible by every scientist.","She plausible her way through the test by guessing."]}},
+ {w:"Conducive",p:"/kənˈdjuː.sɪv/ — adjective",d:"Making a certain situation or outcome likely or possible.",e:"Natural light and minimal noise create an environment that is conducive to concentration.",syn:["Favourable","Beneficial","Helpful","Supportive"],forms:{Collocation:"conducive to (something)"},lv:"C1",quiz:{correct:"A quiet, well-lit room is conducive to effective studying.",wrong:["Loud construction noise outside is highly conducive to concentration.","He conducive the meeting to a close after two hours."]}}
+];
+
+const FITB_READING=[
+ {parts:["Urban environments are becoming increasingly ",{opts:["dense","sparse","vacant"],a:"dense"}," as rural populations migrate to cities. This ",{opts:["decline","phenomenon","obstacle"],a:"phenomenon"}," places growing pressure on infrastructure and public services. Researchers argue that sustainable urban planning is now ",{opts:["optional","irrelevant","essential"],a:"essential"}," for managing this transition effectively."]},
+ {parts:["Despite significant investment, many renewable energy projects remain ",{opts:["dependent","independent","redundant"],a:"dependent"}," on government subsidies to stay commercially viable. Critics argue that this ",{opts:["reliance","abundance","shortage"],a:"reliance"}," distorts the energy market, while supporters maintain that early-stage support is ",{opts:["unnecessary","harmful","justified"],a:"justified"}," given the long-term environmental benefits."]},
+ {parts:["The ",{opts:["proliferation","scarcity","rejection"],a:"proliferation"}," of online learning platforms has transformed how students access education. While some educators ",{opts:["welcome","dismiss","ignore"],a:"welcome"}," this shift as a democratising force, others caution that it may ",{opts:["enhance","replace","exacerbate"],a:"exacerbate"}," existing inequalities in access to technology."]}
+];
+
+const FITB_LISTENING=[
+ {parts:["Many researchers now believe that multitasking is largely a ",{opts:["myth","skill","requirement"],a:"myth"},"; the brain ",{opts:["excels","struggles","refuses"],a:"struggles"}," to focus on two complex tasks simultaneously, and switching between them ",{opts:["improves","reduces","eliminates"],a:"reduces"}," overall efficiency."]},
+ {parts:["The lecture explained that first impressions are formed within ",{opts:["hours","seconds","days"],a:"seconds"}," of meeting someone, and that these initial judgements can be remarkably ",{opts:["inaccurate","persistent","irrelevant"],a:"persistent"}," even when later evidence ",{opts:["confirms","contradicts","ignores"],a:"contradicts"}," them."]}
+];
+
+const MCQ_READING=[
+ {passage:"The introduction of microplastics into marine ecosystems has accelerated dramatically over the past three decades. Studies indicate that seabirds, fish, and marine mammals are ingesting these particles regularly, which bioaccumulate up the food chain. Researchers remain cautious, however, noting that controlled laboratory conditions differ significantly from open-ocean scenarios.",
+  q:"Why do researchers urge caution in interpreting the findings?",
+  opts:["Because microplastics have no proven effect on marine life","Because the study was conducted only on freshwater species","Because lab conditions may not reflect real ocean environments","Because the sample size of the study was too large"],a:2},
+ {passage:"A recent study examined the effects of afternoon napping on cognitive performance among university students. Participants who napped for twenty minutes showed significant improvements in memory recall tasks compared to those who remained awake. However, naps exceeding thirty minutes were associated with grogginess and reduced alertness immediately afterward, an effect researchers termed 'sleep inertia'.",
+  q:"According to the passage, what was the effect of naps longer than thirty minutes?",
+  opts:["They produced no measurable effect on alertness","They improved memory recall more than shorter naps","They caused temporary grogginess and lower alertness","They were associated with long-term memory loss"],a:2},
+ {passage:"Linguists have observed that children acquiring a second language in immersive environments often reach conversational fluency faster than adult learners receiving formal instruction. This has led some researchers to propose a 'critical period' for language acquisition, although the existence and exact boundaries of this period remain contested within the field.",
+  q:"What does the passage suggest about the 'critical period' hypothesis?",
+  opts:["It has been universally accepted by linguists","It applies only to adult learners","Its existence is still debated among researchers","It has been proven false by recent studies"],a:2}
+];
+
+const RO_SETS=[
+ [{t:"Scientists have long studied the migratory patterns of birds.",i:0},{t:"These journeys, often spanning thousands of kilometres, rely on magnetic fields.",i:1},{t:"Recent research has revealed that light pollution disrupts this navigation.",i:2},{t:"As a result, conservation groups are calling for stricter lighting regulations.",i:3}],
+ [{t:"Sleep has traditionally been viewed as a passive state of rest.",i:0},{t:"However, neuroscientists now understand it as an active period of brain consolidation.",i:1},{t:"During deep sleep, the brain transfers information from short-term to long-term memory.",i:2},{t:"This explains why students who sleep well after studying retain material more effectively.",i:3}]
+];
+
+const SUM_PASSAGES=[
+ "Remote work has fundamentally altered the relationship between employees and organisations. While initial concerns focused on productivity, longitudinal studies now suggest that remote workers often demonstrate higher output over sustained periods. However, isolation and reduced team cohesion remain persistent challenges that organisations must address through deliberate culture-building strategies and regular in-person touchpoints.",
+ "Urban green spaces, such as parks and community gardens, have traditionally been valued primarily for their recreational and aesthetic benefits. However, a growing body of research now links access to green spaces with measurable improvements in mental health, air quality, and even local biodiversity. Despite this evidence, many fast-growing cities continue to prioritise commercial and residential development over green areas, often citing land scarcity and high property values as justification."
+];
+
+const ESSAY_PROMPTS=[
+ "Some people believe that social media has had a negative impact on society. Others argue that its benefits outweigh its drawbacks. Discuss both perspectives and give your own view.",
+ "Some people think that universities should focus on providing academic skills, while others believe universities should prepare students for their future careers. Discuss both views and give your opinion."
+];
+
+const RA_TEXTS=[
+ "The development of artificial intelligence has raised significant questions about the future of employment. While automation may eliminate certain routine tasks, economists suggest that new categories of work will emerge, requiring higher-order cognitive skills and adaptability from the modern workforce.",
+ "Renewable energy is now the fastest-growing sector in the global economy. Solar and wind installations have increased dramatically, driven by falling costs and supportive government policies.",
+ "Urban planning must balance economic development with environmental sustainability. Green infrastructure, including parks and permeable surfaces, plays a critical role in managing climate impacts.",
+ "Advances in medical imaging technology have transformed the early detection of diseases. Scans now allow physicians to identify abnormalities that would have remained undetected only a generation ago, significantly improving patient outcomes.",
+ "Global supply chains have become increasingly interconnected, meaning a disruption in one region can have ripple effects across multiple industries worldwide. This has prompted many companies to reconsider strategies that prioritise efficiency over resilience."
+];
+
+const RS_TEXTS=[
+ "The government announced a new policy aimed at reducing carbon emissions by 2035.",
+ "Students who read regularly tend to develop stronger critical thinking and vocabulary skills.",
+ "The conference was attended by delegates from over fifty different countries worldwide.",
+ "Researchers discovered that the ancient settlement had been continuously inhabited for over four thousand years.",
+ "The committee will review all submitted proposals before announcing its final decision next month."
+];
+
+const DI_CHARTS=[
+ {title:"Bar chart (simulated)",unit:"Renewable energy output (GW)",bars:[{label:"2021",h:60},{label:"2022",h:80},{label:"2023",h:55},{label:"2024",h:95}]},
+ {title:"Bar chart (simulated)",unit:"Online course enrolments (millions)",bars:[{label:"2020",h:31},{label:"2021",h:50},{label:"2022",h:69},{label:"2023",h:85},{label:"2024",h:100}]}
+];
+
+const LST_PASSAGES=[
+ "Today I want to discuss the concept of neuroplasticity — the brain's remarkable ability to reorganise itself by forming new neural connections. For decades scientists believed the adult brain was fixed. We now know that learning new skills, physical exercise, and even sleep can strengthen neural pathways significantly. This has major implications for education and rehabilitation medicine.",
+ "Today's topic is the economics of public transit. Many cities subsidise public transportation not because it is profitable, but because the broader benefits — reduced traffic congestion, lower emissions, and better access to employment — outweigh the direct costs. Economists often call this a positive externality: a benefit to society that isn't captured in the price of the service itself."
+];
+
+/* ============================== STORAGE ============================== */
+const STORAGE_KEY='pte-hub-progress-v1';
+const defaultProgress=()=>({streak:0,lastActive:null,weekStart:null,sessionsThisWeek:0,totalSessions:0,
+  vocab:{saved:[],mastery:{},custom:[],flashIdx:0},reading:{correct:0,total:0},
+  scores:{writing:[],listening:[]},speakingSessions:0});
+let progress=defaultProgress();
+const hasStorage=!!(window.storage&&typeof window.storage.get==='function');
+
+async function loadProgress(){
+  if(!hasStorage)return;
+  try{
+    const res=await window.storage.get(STORAGE_KEY);
+    if(res&&res.value){
+      const p=JSON.parse(res.value);
+      progress={...defaultProgress(),...p,
+        vocab:{...defaultProgress().vocab,...(p.vocab||{})},
+        reading:{...defaultProgress().reading,...(p.reading||{})},
+        scores:{...defaultProgress().scores,...(p.scores||{})}};
+    }
+  }catch(e){/* no saved progress yet */}
+}
+async function saveProgress(){
+  if(!hasStorage)return;
+  try{await window.storage.set(STORAGE_KEY,JSON.stringify(progress));}catch(e){console.error('Could not save progress',e);}
+}
+
+function pad2(n){return String(n).padStart(2,'0');}
+function todayStr(){const d=new Date();return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());}
+function addDays(str,n){const d=new Date(str+'T00:00:00');d.setDate(d.getDate()+n);return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());}
+function getWeekStart(today){const d=new Date(today+'T00:00:00');const day=d.getDay();const diff=(day===0?6:day-1);d.setDate(d.getDate()-diff);return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());}
+function dayOfYear(){const now=new Date();const start=new Date(now.getFullYear(),0,0);return Math.floor((now-start)/864e5);}
+
+function touchActivity(){
+  const today=todayStr();
+  if(progress.lastActive!==today){
+    progress.streak=(progress.lastActive===addDays(today,-1))?progress.streak+1:1;
+    progress.lastActive=today;
+  }
+  const ws=getWeekStart(today);
+  if(progress.weekStart!==ws){progress.weekStart=ws;progress.sessionsThisWeek=0;}
+}
+function recordSession(){progress.sessionsThisWeek++;progress.totalSessions++;saveProgress();renderDashboard();}
+function recordReading(correct,total){progress.reading.correct+=correct;progress.reading.total+=total;recordSession();}
+function recordScore(category,score){const arr=progress.scores[category];arr.push(score);if(arr.length>10)arr.shift();recordSession();}
+function recordSpeaking(){progress.speakingSessions++;recordSession();}
+
+/* ============================== HELPERS ============================== */
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function clampScore(n){return Math.max(0,Math.min(90,Math.round(n)));}
+function shuffledIndices(n){const a=[...Array(n).keys()];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function avg(arr){return arr.length?Math.round(arr.reduce((a,b)=>a+b,0)/arr.length):null;}
+
+/* ============================== NAV / SIDEBAR ============================== */
+function nav(pg){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(n=>n.classList.remove('active'));
+  document.getElementById('pg-'+pg).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(n=>{const oc=n.getAttribute('onclick');if(oc&&oc.includes("'"+pg+"'"))n.classList.add('active');});
+  closeSidebar();
+  document.querySelector('.main').scrollTop=0;
+}
+function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
+
+/* ============================== DASHBOARD ============================== */
+function renderDashboard(){
+  document.getElementById('side-streak').textContent=progress.streak;
+  document.getElementById('side-streak-label').textContent=progress.streak===1?'day':'days';
+  document.getElementById('stat-streak').textContent=progress.streak;
+  document.getElementById('stat-streak-label').textContent=progress.streak===1?'day':'days';
+  document.getElementById('stat-streak-bar').style.width=Math.min(100,progress.streak/7*100)+'%';
+
+  const saved=progress.vocab.saved.length;
+  document.getElementById('stat-words').textContent=saved;
+  document.getElementById('stat-words-bar').style.width=Math.min(100,saved/VOCAB.length*100)+'%';
+  document.getElementById('stat-words-sub').textContent=saved+' of '+VOCAB.length+' core words saved';
+
+  const sw=progress.sessionsThisWeek;
+  document.getElementById('stat-sessions').textContent=sw;
+  document.getElementById('stat-sessions-bar').style.width=Math.min(100,sw/15*100)+'%';
+
+  const w=avg(progress.scores.writing),l=avg(progress.scores.listening);
+  const rdTotal=progress.reading.total;
+  const rd=rdTotal?Math.round(progress.reading.correct/rdTotal*100):null;
+  const sp=progress.speakingSessions;
+
+  setSkill('writing',w===null?'—':w+'/90',w===null?0:w/90*100);
+  setSkill('listening',l===null?'—':l+'/90',l===null?0:l/90*100);
+  setSkill('reading',rd===null?'—':rd+'%',rd===null?0:rd);
+  setSkill('speaking',sp+(sp===1?' session':' sessions'),Math.min(100,sp*10));
+}
+function setSkill(id,label,pct){
+  document.getElementById('skill-'+id+'-val').textContent=label;
+  document.getElementById('skill-'+id+'-bar').style.width=pct+'%';
+}
+
+/* ============================== WORD OF THE DAY ============================== */
+let wordIdx=dayOfYear()%VOCAB.length;
+function renderWord(){
+  const w=VOCAB[wordIdx];
+  const isToday=wordIdx===(dayOfYear()%VOCAB.length);
+  if(isToday){
+    const d=new Date();
+    const months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+    document.getElementById('w-label').textContent='PTE WORD OF THE DAY — '+months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
+  }else{
+    document.getElementById('w-label').textContent='BONUS VOCABULARY';
+  }
+  document.getElementById('w-word').textContent=w.w;
+  document.getElementById('w-pron').textContent=w.p;
+  document.getElementById('w-def').textContent=w.d;
+  document.getElementById('w-ex').textContent='"'+w.e+'"';
+  document.getElementById('w-lv').textContent=w.lv+' level';
+  document.getElementById('w-syn').innerHTML=w.syn.map((s,i)=>'<span class="pill'+(i===0?' sel':'')+'">'+esc(s)+'</span>').join('');
+  document.getElementById('w-forms').innerHTML=Object.keys(w.forms).map(k=>'<div style="display:flex;gap:8px"><span style="color:var(--color-text-secondary);width:84px;flex-shrink:0">'+esc(k)+'</span><span>'+esc(w.forms[k])+'</span></div>').join('');
+
+  const opts=[w.quiz.correct,...w.quiz.wrong];
+  const order=shuffledIndices(opts.length);
+  document.getElementById('wod-quiz').innerHTML=order.map((oi,pos)=>{
+    const letter=String.fromCharCode(65+pos);
+    return '<button class="qopt" data-correct="'+(oi===0?'1':'0')+'" onclick="chkW(this)">'+letter+') '+esc(opts[oi])+'</button>';
+  }).join('');
+  updateSaveBtn();
+  document.getElementById('w-save-note').style.display='none';
+}
+function chkW(el){
+  const buttons=[...el.parentNode.children];
+  buttons.forEach(b=>b.disabled=true);
+  if(el.dataset.correct==='1'){el.classList.add('correct');}
+  else{el.classList.add('wrong');const c=buttons.find(b=>b.dataset.correct==='1');if(c)c.classList.add('correct');}
+}
+function nextWord(){wordIdx=(wordIdx+1)%VOCAB.length;renderWord();}
+function updateSaveBtn(){
+  const w=VOCAB[wordIdx].w;
+  const saved=progress.vocab.saved.includes(w);
+  document.getElementById('w-save-btn').innerHTML=saved?'<i class="ti ti-bookmark-filled" aria-hidden="true"></i>Saved':'<i class="ti ti-bookmark" aria-hidden="true"></i>Save word';
+}
+function saveCurrentWord(){
+  const w=VOCAB[wordIdx].w;
+  const i=progress.vocab.saved.indexOf(w);
+  let nowSaved;
+  if(i===-1){progress.vocab.saved.push(w);nowSaved=true;}
+  else{progress.vocab.saved.splice(i,1);nowSaved=false;}
+  saveProgress();renderDashboard();updateSaveBtn();renderSavedVocab();
+  const note=document.getElementById('w-save-note');
+  note.style.display='inline-flex';
+  note.innerHTML=nowSaved?'<i class="ti ti-check" aria-hidden="true"></i> Saved to your vocabulary':'<i class="ti ti-bookmark-off" aria-hidden="true"></i> Removed from saved';
+  clearTimeout(window._saveNoteTmr);
+  window._saveNoteTmr=setTimeout(()=>{note.style.display='none';},2500);
+}
+
+/* ============================== VOCABULARY ============================== */
+function vtab(el,id){
+  document.querySelectorAll('#pg-vocab .tabs .tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+  ['vq','vs','vl'].forEach(i=>document.getElementById(i).style.display='none');
+  document.getElementById(id).style.display='';
+  if(id==='vs')renderSavedVocab();
+  if(id==='vl')renderWordListStats();
+}
+function renderFlashcard(){
+  const idx=progress.vocab.flashIdx%VOCAB.length;
+  const w=VOCAB[idx];
+  document.getElementById('vq-count').textContent='CARD '+(idx+1)+' OF '+VOCAB.length+' — PTE Core vocabulary';
+  document.getElementById('vq-word').textContent=w.w;
+  document.getElementById('vq-pron').textContent=w.p;
+  document.getElementById('vq-def').textContent=w.d+' Example: "'+w.e+'"';
+  document.getElementById('vq-def').style.display='none';
+  document.getElementById('vq-btn').style.display='inline-flex';
+  document.getElementById('vq-rate').style.display='none';
+  document.getElementById('vq-prog').style.width=(idx/VOCAB.length*100)+'%';
+  document.getElementById('vq-count2').textContent=(idx+1)+' / '+VOCAB.length+' cards';
+}
+function flipV(){
+  document.getElementById('vq-def').style.display='block';
+  document.getElementById('vq-btn').style.display='none';
+  document.getElementById('vq-rate').style.display='block';
+}
+function rateV(level){
+  const idx=progress.vocab.flashIdx%VOCAB.length;
+  progress.vocab.mastery[VOCAB[idx].w]=level;
+  progress.vocab.flashIdx=(idx+1)%VOCAB.length;
+  saveProgress();renderFlashcard();renderWordListStats();renderDashboard();
+}
+function renderSavedVocab(){
+  const saved=progress.vocab.saved;
+  const c=document.getElementById('vs-grid');
+  if(!saved.length){
+    c.innerHTML='<div class="empty"><i class="ti ti-bookmark-off" aria-hidden="true"></i><div class="empty-title">No saved words yet</div><div class="empty-sub">Save words from Word of the Day, or rate flashcards, to build your personal list here.</div></div>';
+    return;
+  }
+  c.innerHTML=saved.map(word=>{
+    const w=VOCAB.find(x=>x.w===word);
+    const level=progress.vocab.mastery[word]||'new';
+    const cls=level==='mastered'?'b-green':level==='review'?'b-amber':'b-blue';
+    const txt=level==='mastered'?'Mastered':level==='review'?'Review':'New';
+    return '<div class="card card-sm" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><div><div style="font-size:14.5px;font-weight:500">'+esc(word)+'</div><div style="font-size:12px;color:var(--color-text-secondary);margin-top:2px">'+esc(w?w.d:'')+'</div></div><span class="badge '+cls+'">'+txt+'</span></div>';
+  }).join('');
+}
+function renderWordListStats(){
+  const total=VOCAB.length;
+  const mastered=Object.values(progress.vocab.mastery).filter(v=>v==='mastered').length;
+  const review=Object.values(progress.vocab.mastery).filter(v=>v==='review').length;
+  document.getElementById('wl-bar').style.width=(mastered/total*100)+'%';
+  document.getElementById('wl-count').textContent=mastered+' / '+total+' mastered'+(review?(', '+review+' marked for review'):'');
+  const c=document.getElementById('custom-list');
+  if(!progress.vocab.custom.length){
+    c.innerHTML='<div style="font-size:12.5px;color:var(--color-text-tertiary)">No custom words yet — add words you want to remember above.</div>';
+  }else{
+    c.innerHTML=progress.vocab.custom.map((word,i)=>'<span class="cpill">'+esc(word)+'<button onclick="removeCustomWord('+i+')" aria-label="Remove '+esc(word)+'"><i class="ti ti-x" aria-hidden="true"></i></button></span>').join('');
+  }
+}
+function addCustomWord(){
+  const inp=document.getElementById('custom-inp');
+  const val=inp.value.trim();
+  if(!val)return;
+  if(!progress.vocab.custom.includes(val)){progress.vocab.custom.push(val);saveProgress();renderWordListStats();}
+  inp.value='';
+}
+function removeCustomWord(i){progress.vocab.custom.splice(i,1);saveProgress();renderWordListStats();}
+
+/* ============================== FILES ============================== */
+let files=[],fileFilter='all';
+function doFiles(fl){for(const f of fl)files.push({name:f.name,size:f.size,type:f.type,url:URL.createObjectURL(f)});applyFilter();}
+function doDrop(e){e.preventDefault();document.getElementById('drop-zone').style.borderColor='';doFiles(e.dataTransfer.files);}
+function applyFilter(){
+  const list=fileFilter==='all'?files:files.filter(f=>fileFilter==='img'?f.type.startsWith('image'):fileFilter==='pdf'?f.type.includes('pdf'):(f.type.includes('word')||f.name.endsWith('.docx')||f.name.endsWith('.txt')||f.name.endsWith('.doc')));
+  renderFiles(list);
+}
+function renderFiles(list){
+  document.getElementById('fc').textContent='('+files.length+')';
+  const g=document.getElementById('fg');
+  if(!list.length){
+    g.innerHTML='<div class="empty"><i class="ti ti-folder-open" aria-hidden="true"></i><div class="empty-title">No files'+(files.length?' match this filter':' yet')+'</div><div class="empty-sub">'+(files.length?'Try a different filter above.':'Drop a screenshot, PDF or note above to keep it handy while you study.')+'</div></div>';
+    return;
+  }
+  g.innerHTML=list.map(f=>{
+    let ic='ti-file';
+    if(f.type.startsWith('image'))ic='ti-photo';else if(f.type.includes('pdf'))ic='ti-file-type-pdf';else if(f.name.endsWith('.docx')||f.name.endsWith('.doc'))ic='ti-file-type-doc';
+    const sz=f.size>1048576?(f.size/1048576).toFixed(1)+'MB':(f.size/1024).toFixed(0)+'KB';
+    return '<div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px;text-align:center;cursor:pointer" onclick="window.open(\''+f.url+'\')"><i class="ti '+ic+'" style="font-size:28px;color:var(--accent);display:block;margin-bottom:7px" aria-hidden="true"></i><div style="font-size:12px;word-break:break-all;line-height:1.3">'+esc(f.name)+'</div><div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">'+sz+'</div></div>';
+  }).join('');
+}
+function filt(type,el){fileFilter=type;document.querySelectorAll('#pg-files .pill').forEach(p=>p.classList.remove('sel'));el.classList.add('sel');applyFilter();}
+function clearFiles(){files.forEach(f=>URL.revokeObjectURL(f.url));files=[];applyFilter();}
+
+/* ============================== READING ============================== */
+function renderFITB(containerId,item,prefix){
+  let html='',n=0;
+  item.parts.forEach(part=>{
+    if(typeof part==='string'){html+=esc(part);}
+    else{
+      html+='<select class="inp" style="width:auto;display:inline-block;padding:3px 8px" id="'+prefix+'-b'+n+'" data-ans="'+esc(part.a)+'"><option value="">___</option>'+part.opts.map(o=>'<option>'+esc(o)+'</option>').join('')+'</select>';
+      n++;
+    }
+  });
+  const c=document.getElementById(containerId);
+  c.innerHTML=html;c.dataset.blanks=n;c.dataset.prefix=prefix;
+}
+function checkFITB(containerId,resultId,category){
+  const c=document.getElementById(containerId);
+  const n=parseInt(c.dataset.blanks,10),prefix=c.dataset.prefix;
+  let correct=0;const answers=[];
+  for(let i=0;i<n;i++){
+    const sel=document.getElementById(prefix+'-b'+i);
+    answers.push(sel.dataset.ans);
+    if(sel.value===sel.dataset.ans)correct++;
+  }
+  const r=document.getElementById(resultId);
+  r.style.display='block';
+  r.className='result '+(correct===n?'good':'warn');
+  r.textContent='You got '+correct+'/'+n+' correct. Correct answer'+(n>1?'s':'')+': '+answers.join(', ')+'.'+(correct===n?' Excellent work!':' Review the passage for context clues.');
+  if(category==='reading')recordReading(correct,n);else recordSession();
+}
+let rfitbIdx=0;
+function newReadingFITB(){rfitbIdx=(rfitbIdx+1)%FITB_READING.length;renderFITB('rfitb-text',FITB_READING[rfitbIdx],'rb');document.getElementById('rfitb-result').style.display='none';}
+let lfitbIdx=0;
+function newListeningFITB(){lfitbIdx=(lfitbIdx+1)%FITB_LISTENING.length;renderFITB('lfitb-text',FITB_LISTENING[lfitbIdx],'lb');document.getElementById('lfitb-result').style.display='none';}
+
+let mcqIdx=0;
+function renderMCQ(){
+  const m=MCQ_READING[mcqIdx];
+  document.getElementById('mcq-passage').textContent=m.passage;
+  document.getElementById('mcq-q').textContent=m.q;
+  document.getElementById('mcq-opts').innerHTML=m.opts.map((o,i)=>'<button class="qopt" data-correct="'+(i===m.a?'1':'0')+'" onclick="ansMCQ(this)">'+String.fromCharCode(65+i)+') '+esc(o)+'</button>').join('');
+}
+function ansMCQ(el){
+  const buttons=[...el.parentNode.children];
+  buttons.forEach(b=>b.disabled=true);
+  if(el.dataset.correct==='1'){el.classList.add('correct');}
+  else{el.classList.add('wrong');const c=buttons.find(b=>b.dataset.correct==='1');if(c)c.classList.add('correct');}
+  recordReading(el.dataset.correct==='1'?1:0,1);
+}
+function newMCQ(){mcqIdx=(mcqIdx+1)%MCQ_READING.length;renderMCQ();}
+
+let roBankIdx=0,roOrder=[];
+function initRO(){
+  const len=RO_SETS[roBankIdx].length;
+  roOrder=shuffledIndices(len);
+  while(roOrder.every((v,i)=>v===i))roOrder=shuffledIndices(len);
+  renderRO();
+}
+function renderRO(){
+  const bank=RO_SETS[roBankIdx];
+  const list=document.getElementById('ro-list');
+  list.innerHTML=roOrder.map(origIdx=>{
+    const s=bank[origIdx];
+    return '<div class="ro-item" draggable="true" data-idx="'+origIdx+'"><span class="ro-handle"><i class="ti ti-grip-vertical" aria-hidden="true"></i></span><span class="ro-text">'+esc(s.t)+'</span><span class="ro-controls"><button onclick="moveRO(this,-1)" aria-label="Move up"><i class="ti ti-chevron-up" aria-hidden="true"></i></button><button onclick="moveRO(this,1)" aria-label="Move down"><i class="ti ti-chevron-down" aria-hidden="true"></i></button></span></div>';
+  }).join('');
+  document.getElementById('ro-result').style.display='none';
+  refreshROButtons();attachDrag();
+}
+function refreshROButtons(){
+  const items=[...document.getElementById('ro-list').children];
+  items.forEach((item,pos)=>{
+    const btns=item.querySelectorAll('.ro-controls button');
+    btns[0].disabled=pos===0;
+    btns[1].disabled=pos===items.length-1;
+  });
+}
+function moveRO(btn,dir){
+  const item=btn.closest('.ro-item');const list=item.parentNode;
+  if(dir===-1&&item.previousElementSibling)list.insertBefore(item,item.previousElementSibling);
+  else if(dir===1&&item.nextElementSibling)list.insertBefore(item.nextElementSibling,item);
+  refreshROButtons();
+}
+function attachDrag(){
+  const list=document.getElementById('ro-list');let dragEl=null;
+  [...list.children].forEach(item=>{
+    item.addEventListener('dragstart',()=>{dragEl=item;item.classList.add('dragging');});
+    item.addEventListener('dragend',()=>{item.classList.remove('dragging');refreshROButtons();});
+    item.addEventListener('dragover',e=>{
+      e.preventDefault();
+      if(!dragEl||dragEl===item)return;
+      const rect=item.getBoundingClientRect();
+      const after=(e.clientY-rect.top)>rect.height/2;
+      list.insertBefore(dragEl,after?item.nextSibling:item);
+    });
+  });
+}
+function checkRO(){
+  const order=[...document.getElementById('ro-list').children].map(el=>parseInt(el.dataset.idx,10));
+  const correct=order.every((v,i)=>v===i);
+  const r=document.getElementById('ro-result');
+  r.style.display='block';
+  r.className='result '+(correct?'good':'warn');
+  r.textContent=correct?'Correct order — the paragraph now flows logically from introduction to conclusion.':'Not quite. Think about which sentence introduces the topic, which adds supporting detail, and which gives the outcome or conclusion.';
+  recordReading(correct?1:0,1);
+}
+function shuffleRO(){initRO();}
+function newROSet(){roBankIdx=(roBankIdx+1)%RO_SETS.length;initRO();}
+
+function rtab(el,id){
+  document.querySelectorAll('#pg-read .tabs .tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+  ['rr-fitb','rr-mcq','rr-ro'].forEach(i=>document.getElementById(i).style.display='none');
+  document.getElementById(id).style.display='';
+}
+function ltab(el,id){
+  document.querySelectorAll('#pg-listen .tabs .tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+  ['ls-sum','ls-fitb'].forEach(i=>document.getElementById(i).style.display='none');
+  document.getElementById(id).style.display='';
+}
+
+/* ============================== AI SCORING (Writing & Listening) ============================== */
+async function callClaude(prompt,maxTokens){
+  const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:maxTokens,messages:[{role:'user',content:prompt}]})});
+  if(!r.ok)throw new Error('Request failed: '+r.status);
+  const data=await r.json();
+  const block=(data.content||[]).find(b=>b.type==='text');
+  if(!block)throw new Error('No text in response');
+  return block.text;
+}
+function parseJSON(raw){
+  let t=raw.trim().replace(/^```(?:json)?\s*/i,'').replace(/```\s*$/,'').trim();
+  try{return JSON.parse(t);}catch(e){
+    const m=t.match(/\{[\s\S]*\}/);
+    if(m){try{return JSON.parse(m[0]);}catch(e2){}}
+    return null;
+  }
+}
+function showBoxMsg(box,msg,warn){
+  box.style.display='block';
+  box.className='fb-box'+(warn?' warn':'');
+  box.textContent=msg;
+}
+function renderScoreFB(box,data,raw){
+  box.style.display='block';box.className='fb-box';
+  if(data&&typeof data.score==='number'){
+    box.innerHTML='<div class="score-badge">Estimated score <b>'+clampScore(data.score)+'</b>/90</div><div style="margin-top:8px">'+esc(data.feedback||'')+'</div>';
+  }else{box.textContent=raw;}
+}
+function renderEssayFB(box,data,raw){
+  box.style.display='block';box.className='fb-box';
+  if(data&&typeof data.score==='number'){
+    let html='<div class="score-badge">Estimated score <b>'+clampScore(data.score)+'</b>/90</div>';
+    if(Array.isArray(data.strengths)&&data.strengths.length)html+='<div class="fb-section-title">Strengths</div><ul class="fb-list">'+data.strengths.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ul>';
+    if(Array.isArray(data.improvements)&&data.improvements.length)html+='<div class="fb-section-title">To improve</div><ul class="fb-list">'+data.improvements.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ul>';
+    if(data.tip)html+='<div class="fb-section-title">Tip</div><div style="font-size:13.5px">'+esc(data.tip)+'</div>';
+    box.innerHTML=html;
+  }else{box.textContent=raw;}
+}
+async function withLoading(btn,fn){
+  const original=btn.innerHTML;
+  btn.disabled=true;btn.innerHTML='<i class="ti ti-loader-2 spin" aria-hidden="true"></i> Scoring…';
+  try{await fn();}finally{btn.disabled=false;btn.innerHTML=original;}
+}
+
+/* ----- Summarise written text ----- */
+let sumIdx=0;
+function newSumPassage(){sumIdx=(sumIdx+1)%SUM_PASSAGES.length;document.getElementById('sum-passage').textContent=SUM_PASSAGES[sumIdx];document.getElementById('sum-fb').style.display='none';document.getElementById('sum-inp').value='';document.getElementById('sum-wc').textContent='0 words';}
+async function getSumFeedback(btn){
+  const text=document.getElementById('sum-inp').value.trim();
+  const fb=document.getElementById('sum-fb');
+  if(!text){showBoxMsg(fb,'Write your one-sentence summary first.',true);return;}
+  await withLoading(btn,async()=>{
+    try{
+      const prompt='You are a PTE Academic examiner. Score this "Summarize Written Text" response on the 0-90 scale, considering: single-sentence form (5-75 words), coverage of the main idea and key points, and grammar.\n\nOriginal text:\n"""'+SUM_PASSAGES[sumIdx]+'"""\n\nStudent response:\n"""'+text+'"""\n\nRespond with ONLY valid JSON, no markdown or code fences, in exactly this shape:\n{"score": <integer 0-90>, "feedback": "<2-3 sentences of specific, encouraging feedback>"}';
+      const raw=await callClaude(prompt,500);
+      const data=parseJSON(raw);
+      renderScoreFB(fb,data,raw);
+      if(data&&typeof data.score==='number')recordScore('writing',clampScore(data.score));else recordSession();
+    }catch(e){showBoxMsg(fb,'Could not reach the scoring service. Check your connection and try again.',true);}
+  });
+}
+
+/* ----- Write essay ----- */
+let essayIdx=0;
+function newEssayPrompt(){essayIdx=(essayIdx+1)%ESSAY_PROMPTS.length;document.getElementById('essay-prompt').textContent=ESSAY_PROMPTS[essayIdx];document.getElementById('essay-fb').style.display='none';document.getElementById('essay-inp').value='';document.getElementById('essay-wc').textContent='0 words';}
+async function getEssayFeedback(btn){
+  const text=document.getElementById('essay-inp').value.trim();
+  const wc=text?text.split(/\s+/).filter(Boolean).length:0;
+  const fb=document.getElementById('essay-fb');
+  if(wc<50){showBoxMsg(fb,'Write at least 50 words before requesting feedback — PTE essays are 200–300 words.',true);return;}
+  await withLoading(btn,async()=>{
+    try{
+      const prompt='You are a PTE Academic examiner scoring a "Write Essay" task on the 0-90 scale, considering content, form (200-300 words), development & structure, grammar, and vocabulary.\n\nPrompt:\n"""'+ESSAY_PROMPTS[essayIdx]+'"""\n\nStudent essay ('+wc+' words):\n"""'+text+'"""\n\nRespond with ONLY valid JSON, no markdown or code fences, in exactly this shape:\n{"score": <integer 0-90>, "strengths": ["<point>","<point>"], "improvements": ["<point>","<point>"], "tip": "<one specific grammar or vocabulary tip>"}';
+      const raw=await callClaude(prompt,700);
+      const data=parseJSON(raw);
+      renderEssayFB(fb,data,raw);
+      if(data&&typeof data.score==='number')recordScore('writing',clampScore(data.score));else recordSession();
+    }catch(e){showBoxMsg(fb,'Could not reach the scoring service. Check your connection and try again.',true);}
+  });
+}
+
+/* ----- Listening: summarise spoken text ----- */
+let lstIdx=0;
+function newLstPassage(){lstIdx=(lstIdx+1)%LST_PASSAGES.length;document.getElementById('lst-passage').textContent=LST_PASSAGES[lstIdx];document.getElementById('lst-fb').style.display='none';document.getElementById('lst-inp').value='';document.getElementById('lst-wc').textContent='0 words';}
+async function getLstFeedback(btn){
+  const text=document.getElementById('lst-inp').value.trim();
+  const fb=document.getElementById('lst-fb');
+  if(!text){showBoxMsg(fb,'Write your summary first.',true);return;}
+  const wc=text.split(/\s+/).filter(Boolean).length;
+  await withLoading(btn,async()=>{
+    try{
+      const prompt='You are a PTE Academic examiner. Score this "Summarize Spoken Text" response on the 0-90 scale, considering: coverage of the main idea and key points from the lecture, length (50-70 words), grammar, and spelling.\n\nLecture transcript:\n"""'+LST_PASSAGES[lstIdx]+'"""\n\nStudent summary ('+wc+' words):\n"""'+text+'"""\n\nRespond with ONLY valid JSON, no markdown or code fences:\n{"score": <integer 0-90>, "feedback": "<2-3 sentences of specific feedback>"}';
+      const raw=await callClaude(prompt,500);
+      const data=parseJSON(raw);
+      renderScoreFB(fb,data,raw);
+      if(data&&typeof data.score==='number')recordScore('listening',clampScore(data.score));else recordSession();
+    }catch(e){showBoxMsg(fb,'Could not reach the scoring service. Check your connection and try again.',true);}
+  });
+}
+
+/* ============================== WRITING TABS ============================== */
+function wtab(el,id){
+  document.querySelectorAll('#pg-write .tabs .tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+  ['ww-sum','ww-essay'].forEach(i=>document.getElementById(i).style.display='none');
+  document.getElementById(id).style.display='';
+}
+
+/* ============================== SPEAKING ============================== */
+let raIdx=0;
+function newRA(){raIdx=(raIdx+1)%RA_TEXTS.length;document.getElementById('ra-text').textContent=RA_TEXTS[raIdx];}
+let rsIdx=0;
+function newRS(){
+  rsIdx=(rsIdx+1)%RS_TEXTS.length;
+  const t=document.getElementById('rs-text');t.style.display='none';t.textContent='"'+RS_TEXTS[rsIdx]+'"';
+  document.getElementById('rs-reveal-btn').style.display='inline-flex';
+}
+function revealRS(){
+  document.getElementById('rs-text').style.display='block';
+  document.getElementById('rs-reveal-btn').style.display='none';
+  recordSpeaking();
+}
+let isRec=false,recTmr=null,recSec=0;
+function toggleRec(){
+  if(!isRec){
+    isRec=true;recSec=0;
+    document.getElementById('rec-lbl').textContent='Stop';
+    document.getElementById('rec-ind').style.display='flex';
+    document.getElementById('rec-t').textContent='00:00 — recording...';
+    recTmr=setInterval(()=>{recSec++;const m=Math.floor(recSec/60),s=recSec%60;document.getElementById('rec-t').textContent=pad2(m)+':'+pad2(s)+' — recording...';},1000);
+  }else{
+    isRec=false;clearInterval(recTmr);
+    document.getElementById('rec-lbl').textContent='Start recording';
+    document.getElementById('rec-ind').style.display='none';
+    document.getElementById('rec-t').textContent='Done! Review your pacing and stress patterns.';
+    recordSpeaking();
+  }
+}
+let diIdx=0,diTimer=null;
+function renderDI(){
+  const c=DI_CHARTS[diIdx];
+  document.getElementById('di-chart-title').textContent=c.title;
+  document.getElementById('di-unit').textContent=c.unit;
+  document.getElementById('di-bars').innerHTML=c.bars.map(b=>'<div style="display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:30px;background:var(--accent);height:'+b.h+'px;border-radius:3px 3px 0 0"></div><span style="font-size:11px">'+esc(b.label)+'</span></div>').join('');
+}
+function newDI(){diIdx=(diIdx+1)%DI_CHARTS.length;renderDI();}
+function startDIPractice(){
+  const btn=document.getElementById('di-btn'),status=document.getElementById('di-status');
+  if(diTimer)return;
+  btn.disabled=true;let phase='study',t=25;
+  status.textContent='Study the image — 00:'+pad2(t);
+  diTimer=setInterval(()=>{
+    t--;
+    if(t<=0){
+      if(phase==='study'){phase='describe';t=40;status.textContent='Describe the image now — 00:'+pad2(t);}
+      else{clearInterval(diTimer);diTimer=null;status.textContent='Done! Review how clearly you covered the trend and key data points.';btn.disabled=false;recordSpeaking();return;}
+    }else{
+      status.textContent=(phase==='study'?'Study the image — ':'Describe the image now — ')+'00:'+pad2(t);
+    }
+  },1000);
+}
+function stab(el,id){
+  document.querySelectorAll('#pg-speak .tabs .tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+  ['ss-ra','ss-rs','ss-di'].forEach(i=>document.getElementById(i).style.display='none');
+  document.getElementById(id).style.display='';
+}
+
+/* ============================== WORD COUNTERS ============================== */
+function wireWordCount(id,label){
+  document.getElementById(id).addEventListener('input',function(){
+    const n=this.value.trim()?this.value.trim().split(/\s+/).length:0;
+    document.getElementById(label).textContent=n+' word'+(n===1?'':'s');
+  });
+}
+
+/* ============================== INIT ============================== */
+async function init(){
+  await loadProgress();
+  touchActivity();
+  await saveProgress();
+
+  renderDashboard();
+  renderWord();
+  renderFlashcard();
+  renderWordListStats();
+
+  renderFITB('rfitb-text',FITB_READING[0],'rb');
+  renderFITB('lfitb-text',FITB_LISTENING[0],'lb');
+  renderMCQ();
+  initRO();
+
+  document.getElementById('sum-passage').textContent=SUM_PASSAGES[0];
+  document.getElementById('essay-prompt').textContent=ESSAY_PROMPTS[0];
+  document.getElementById('lst-passage').textContent=LST_PASSAGES[0];
+  document.getElementById('ra-text').textContent=RA_TEXTS[0];
+  document.getElementById('rs-text').textContent='"'+RS_TEXTS[0]+'"';
+  renderDI();
+
+  wireWordCount('sum-inp','sum-wc');
+  wireWordCount('essay-inp','essay-wc');
+  wireWordCount('lst-inp','lst-wc');
+}
+init();
+</script>
+</body>
+</html>
